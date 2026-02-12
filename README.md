@@ -24,4 +24,20 @@ install virtualenv
 ## Run 
 
      flask run
+
+## Docker
+
+To run with Docker:
+
+1. Pull the image:
+   ```
+   docker pull harshal825/flask-chat-app
+   ```
+
+2. Run the container:
+   ```
+   docker run -p 5000:5000 harshal825/flask-chat-app
+   ```
+
+Access the app at http://localhost:5000
      

@@ -71,10 +71,9 @@ def signin():
 
         flash("username or password is wrong")
         return render_template("signin.html")
-
-
     else:
         return render_template("signin.html")
+
 
 @app.route("/")
 @login_required

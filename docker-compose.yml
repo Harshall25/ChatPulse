@@ -1,0 +1,14 @@
+services:
+  app:
+    image: flask-chat-app
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      # Set to production to disable debug mode
+      - FLASK_ENV=production
+    volumes:
+      # Mount host directory for SQLite database persistence
+      - ./data:/app/data
+    restart: unless-stopped
+    

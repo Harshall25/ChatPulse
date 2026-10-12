@@ -318,7 +318,7 @@
     </div>
 
     <script>
-        var username = "{{username | safe}}";
-        var roomname = "{{roomname | safe }}";
+        var username = {{ username | tojson }};
+        var roomname = {{ roomname | tojson }};
     </script>
 {%endblock%}

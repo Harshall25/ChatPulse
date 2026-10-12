@@ -1,9 +1,4 @@
 import os
-import requests
-
-import datetime
-
-from collections import deque
 
 from flask import Flask, jsonify, session , render_template, request , redirect , flash
 from flask_socketio import SocketIO, emit , leave_room , join_room
@@ -15,12 +10,20 @@ import database
 
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config["SECRET_KEY"] = "my secret key"  
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-only-secret-key")
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+app.config["SESSION_COOKIE_SECURE"] = os.environ.get("FLASK_ENV") == "production"
+app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024
 
 # Initialize Flask-Session
 Session(app)
 
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
+socketio = SocketIO(
+    app,
+    cors_allowed_origins=os.environ.get("SOCKETIO_CORS_ALLOWED_ORIGINS", "*"),
+    async_mode='threading'
+)
 
 # Initialize database on startup
 database.init_database()

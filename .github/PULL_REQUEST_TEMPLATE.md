@@ -9,7 +9,7 @@
 
 ## Testing evidence
 Commands run and outcomes:
-- [ ] `python -m unittest discover -v`
+- [ ] `python - <<'PY'` (unittest discovery snippet from CONTRIBUTING.md)
 - [ ] `python -m compileall application.py database.py helpers.py`
 - [ ] Not applicable (explain why)
 

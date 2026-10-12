@@ -51,7 +51,13 @@ Open `http://127.0.0.1:5000`.
 
 ## Run tests/checks
 ```bash
-python -m unittest discover -v
+python - <<'PY'
+import unittest
+suite = unittest.defaultTestLoader.discover('.')
+print(f"Discovered {suite.countTestCases()} test(s)")
+result = unittest.TextTestRunner(verbosity=2).run(suite)
+raise SystemExit(0 if result.wasSuccessful() else 1)
+PY
 python -m compileall application.py database.py helpers.py
 ```
 

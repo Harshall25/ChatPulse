@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 import os
 
-DATABASE_PATH = 'chat_app.db'
+DATABASE_PATH = os.environ.get("DATABASE_PATH", "chat_app.db")
 
 def get_db_connection():
     """Get database connection with row factory for dict-like access"""

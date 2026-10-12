@@ -56,3 +56,5 @@ Thumbs.db
 
 # Database (optional - you might want to keep chat_app.db for initial data)
 # chat_app.db
+*.db
+data/
